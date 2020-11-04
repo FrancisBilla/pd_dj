@@ -7,6 +7,34 @@
 {{ df | safe }}
 <hr>
 <div>
-
+    {% if error_message %}
+        {{ error_message }}
+    {% endif %}
+    <form action="" method="POST" class="ui form">
+        {% csrf_token %}
+        <div class="field">
+            <label>Choose a chart type</label>
+            <select  class="ui selection dropdown" id="select" name="sales">
+                    <option class="default text">------</option>
+                    <option class="item" value="bar">Bar plot</option>
+                    <option class="item" value="line">Line plot</option>
+                    <option class="item" value="count">Count plot</option>
+            </select>
+        </div>
+        <div class="field">
+            <label>Name</label>
+            <div class="two fields">
+              <div class="field">
+                  <label> Data from: </label>
+                <input type="date" name="date_from">
+              </div>
+              <div class="field">
+                <label> Data to: </label>
+                <input type="date" name="date_to" >
+              </div>
+            </div>
+          </div>
+          <button class="ui primary buttom" type="submit">Submit</button>
+    </form>
 </div>
-{% endblock%}
+{% endblock %}
