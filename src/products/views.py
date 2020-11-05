@@ -22,6 +22,14 @@ def chart_select_view(request):
             df['date'] = df['date'].apply(lambda x: x.strftime('%Y-%m-%d'))
             df2 = df.groupby('date', as_index=False)['total_price'].agg('sum')
 
+            if chart_type != "":
+                if date_from != "" and date_to != "":
+                    df = df[(df['date']> date_from) & (df['date']< date_to)]
+                    df2 = df.groupby('date', as_index=False)['total_price'].agg('sum')
+                #function to get a graph
+            else:
+                error_message = 'Please select a chart type to continue'
+
     else:
         error_message = 'No records in the database'
         df = 'No records for Purchase'
