@@ -18,9 +18,10 @@ def chart_select_view(request):
             chart_type = request.POST['sales']
             date_from = request.POST['date_from']
             date_to = request.POST['date_to']
-
+            print(chart_type)
             df['date'] = df['date'].apply(lambda x: x.strftime('%Y-%m-%d'))
             df2 = df.groupby('date', as_index=False)['total_price'].agg('sum')
+
 
             if chart_type != "":
                 if date_from != "" and date_to != "":
