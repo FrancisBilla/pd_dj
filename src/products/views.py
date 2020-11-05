@@ -36,7 +36,7 @@ def chart_select_view(request):
 
     else:
         error_message = 'No records in the database'
-        df = 'No records for Purchase'
+        # df = 'No records for Purchase'
 
     context = {
         'graph': graph,
