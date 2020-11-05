@@ -6,6 +6,7 @@ import pandas as pd
 
 def chart_select_view(request):
     error_message = None
+    df = None
 
     product_df = pd.DataFrame(Product.objects.all().values())
     purchase_df = pd.DataFrame(Purchase.objects.all().values())
@@ -17,13 +18,15 @@ def chart_select_view(request):
             chart_type = request.POST['sales']
             date_from = request.POST['date_from']
             date_to = request.POST['date_to']
+
+            df['date'] = df['date'].apply(lambda x: x.strftime('%Y-%m-%d'))
+            df2 = df.groupby('date', as_index=False)['total_price'].agg('sum')
+
     else:
         error_message = 'No records in the database'
-        df = None
+        df = 'No records for Purchase'
+
     context = {
         'error_message': error_message,
-        'products': product_df.to_html(),
-        'purchases': purchase_df.to_html(),
-        'df': df,
     }
     return render(request, 'products/main.html', context)
