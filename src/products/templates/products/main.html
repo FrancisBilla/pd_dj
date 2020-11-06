@@ -4,11 +4,28 @@
 {% block title %}performance{% endblock title %}
 
 {% block content %}
-
+<div class="ui modal mymodal">
+  <div class="header"><h1>Price data</h1></div>
+  <div class="ui container">
+    <ul>
+      <li><strong>Count: </strong> {{ price.count | floatformat }}</li>
+      <li><strong>Mean: </strong> {{ price.mean | floatformat }}</li>
+      <li><strong>Median: </strong> {{ price.median | floatformat }}</li>
+      <li><strong>Min: </strong> {{ price.min | floatformat }}</li>
+      <li><strong>Max: </strong> {{ price.max | floatformat }}</li>
+      <li><strong>Std dev: </strong> {{ price.std | floatformat }}</li>
+    </ul>
+  </div>
+</div>
 
 <div>
     {% if error_message %}
-    <div class="ui red message">{{ error_message }}</div>
+        <div class="ui negative message">
+            <i class ="close icon"></i>
+            <div class="header">
+              {{ error_message }}
+            </div>
+          </div>
     {% endif %}
 
     {% if request.POST %}
@@ -43,5 +60,6 @@
           </div>
           <button class="ui primary buttom" type="submit">Submit</button>
     </form>
+    <button class ='ui secondary buttom' id='modal-btn'>See summary</button>
 </div>
 {% endblock %}
