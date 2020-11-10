@@ -38,12 +38,22 @@
         {% csrf_token %}
         <div class="field">
             <label>Choose a chart type</label>
-            <select  class="ui selection dropdown" id="select" name="sales">
+            <div class="ui selection dropdown">
+              <input type="hidden" name="sales">
+              <i class="dropdown icon"></i>
+              <div class="default text"> ------</div>
+              <div class="menu">
+                <div class="item" value="bar">Bar plot</div>
+                <div class="item" value="line">Line plot</div>
+                <div class="item" value="count">Count plot</div>
+              </div>
+            </div>
+            <!-- <select  class="ui selection dropdown" id="select" name="sales">
                     <option class="default text">------</option>
                     <option class="item" value="bar">Bar plot</option>
                     <option class="item" value="line">Line plot</option>
                     <option class="item" value="count">Count plot</option>
-            </select>
+            </select> -->
         </div>
         <div class="field">
             <label>Name</label>

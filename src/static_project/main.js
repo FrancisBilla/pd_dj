@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  alert("OK");
+  // alert("OK");
     $('.ui.dropdown')
         .dropdown()
 
