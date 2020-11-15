@@ -8,3 +8,4 @@ urlpatterns = [
     path('add/', add_purchase_view, name='add-purchase-view')
 ]
 
+

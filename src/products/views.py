@@ -50,6 +50,7 @@ def chart_select_view(request):
 
 def add_purchase_view(request):
     form = PurchaseForm(request.POST or None )
+    added_message = None
 
     if form.is_valid():
         obj = form.save(commit=False)
@@ -60,5 +61,6 @@ def add_purchase_view(request):
 
     context = {
         'form': form,
+        'added_message': 'Entity has added successfully'
     }
     return render(request, 'products/add.html', context)
