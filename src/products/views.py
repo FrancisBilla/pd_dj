@@ -63,9 +63,10 @@ def add_purchase_view(request):
         obj.save()
 
         form = PurchaseForm()
+        added_message = 'The purchase has been added'
 
     context = {
         'form': form,
-        added_message: 'Entity has added successfully'
+        'added_message': added_message
     }
     return render(request, 'products/add.html', context)
