@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .forms import CsvForm
 from .models import Csv
 import csv
+from django.contrib.auth.models import User
 
 # Create your views here.
 def upload_file_view(request):
@@ -16,7 +17,14 @@ def upload_file_view(request):
 
             for row in reader:
                 print(row)
-
+                row = ''.join(row)
+                print(row)
+                row = row.replace(';',' ')
+                print(row)
+                row = row.split()
+                print(row)
+                user = User.objects.get(id=row[3])
+                print(user)
 
         obj.activated=True
         obj.save()
