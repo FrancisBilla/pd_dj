@@ -3,10 +3,11 @@
 {% block title %}customer data{% endblock title %}
 
 {% block content %}
-
 <h1>Correlation: {{ corr }}</h1>
-{% if graph %}
-<img src="data:image/png;base64, {{graph|safe}}">
-{% endif %}
+    {% if graph %}
+        <div class="block-center">
+            <img src="data:image/png;base64, {{graph|safe}}" height="800" width="auto">
+        </div>
+    {% endif %}
 
 {% endblock content %}

@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from io import BytesIO
 import base64
-
+from django.contrib.auth.models import User
 
 
 def get_salesman_from_id(val):
