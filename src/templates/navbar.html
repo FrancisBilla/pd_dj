@@ -2,7 +2,7 @@
 {% url 'products:main-products-view' as path_to_performance %}
 {% url 'products:add-purchase-view' as path_to_adding_records %}
 {% url 'csvs:upload-view' as path_to_upload %}
-{% url 'customers:customer-view' as path_to_customers %}
+{% url 'customers:main-customers-view' as path_to_customers %}
 
 <div class="ui secondary pointing menu">
     <a class="{% if request.path == home %} active {% endif %} item">
@@ -18,7 +18,7 @@
         Upload file
     </a>
     <a href={{path_to_customers}} class="{% if request.path == path_to_customers %} active {% endif %} item">
-      Customer data
+      Customers
     </a>
     <div class="right menu">
       <a class="ui item">
