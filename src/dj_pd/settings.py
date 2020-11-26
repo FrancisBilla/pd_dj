@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'dj_pd',
     'products',
     'csvs',
+    'customers',
 ]
 
 MIDDLEWARE = [
