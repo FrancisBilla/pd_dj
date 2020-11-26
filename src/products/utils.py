@@ -4,6 +4,12 @@ from io import BytesIO
 import base64
 
 
+
+def get_salesman_from_id(val):
+    salesman = User.objects.get(id=val)
+    return salesman
+
+
 def get_image():
     # crete a bytes buffer for the image to save
     buffer = BytesIO()
