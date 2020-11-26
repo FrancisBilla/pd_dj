@@ -6,17 +6,19 @@ from .forms import PurchaseForm
 from django.http import HttpResponse
 import matplotlib.pyplot as plt
 import seaborn as sns
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
 
+@login_required
 def sales_dist_view(request):
     df = pd.DataFrame(Purchase.objects.all().values())
     df['salesman_id'] = df['salesman_id'].apply(get_salesman_from_id)
     df.rename({'salesman_id':'salesman'}, axis=1, inplace=True)
     df['date'] = df['date'].apply(lambda x: x.strftime('%Y-%m-%d'))
     # print(df)
-    
+
     plt.switch_backend('Agg')
     plt.xticks(rotation= 45)
     sns.barplot(x='date', y='total_price', hue='salesman', data=df)
@@ -79,6 +81,7 @@ def chart_select_view(request):
     }
     return render(request, 'products/main.html', context)
 
+@login_required
 def add_purchase_view(request):
     form = PurchaseForm(request.POST or None )
     added_message = None

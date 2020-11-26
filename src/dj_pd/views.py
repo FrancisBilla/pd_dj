@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import LoginForm
 from django.contrib.auth import authenticate, login
 
@@ -17,10 +17,16 @@ def login_view(request):
             user = authenticate(username = username, password=password)
             if user is not None:
                 login(request, user)
-        print(form.data)
+                if request.GET.get('next'):
+                    return redirect(request.GET.get('next'))
+                else:
+                    return redirect('home')
+            else:
+                error_message = 'Ops, Something went wrong..'
+        # print(form.data)
 
     context = {
         'form': form,
+        'error_message' : error_message,
     }
-
     return render(request, 'login.html', context)
