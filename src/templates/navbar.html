@@ -1,4 +1,4 @@
-
+{% url 'home' as path_to_home %}
 {% url 'products:main-products-view' as path_to_performance %}
 {% url 'products:add-purchase-view' as path_to_adding_records %}
 {% url 'products:sales-view' as path_to_sales %}
@@ -7,7 +7,7 @@
 
 
 <div class="ui secondary pointing menu">
-    <a class="{% if request.path == home %} active {% endif %} item">
+    <a href={{path_to_home}} class="{% if request.path == home %} active {% endif %} item">
       Home
     </a>
     <a href={{path_to_performance}} class="{% if request.path == path_to_performance %} active {% endif %} item">
